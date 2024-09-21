@@ -1,0 +1,40 @@
+create database mcu;
+use mcu;
+
+-- Show the movies released between 2020 and 2022
+select * from mcu_data
+where year between 2020 and 2022;
+-- Get nearest vote in form of integer 
+select movie,ceil(Votes) as nearest_vote
+from Mcu_data;
+-- Get the max and min votes 
+select max(votes),movie
+from Mcu_data
+group by movie;
+
+select min(votes),movie
+from mcu_data
+group by movie;
+-- Get the largest amount of vote in form of integer 
+select movie,floor(votes)
+from mcu_data;
+-- Give the movie name that starts with s 
+select movie
+from mcu_data
+where movie like "s%";
+-- Give the directors name and their movies whose first name starts with D
+select movie,Director from mcu_data
+where Director like "D%";
+-- Check if the movie is rated R then show the message r rated movie or show for 18+
+select movie, if(Rating= "R","r rated movie","for 18+")
+from mcu_data;
+-- Show the imdb_score that is high
+select IMDB_Score,movie
+from mcu_data
+order by IMDB_Score desc
+limit 5;
+-- Show the movies that have highest USA_gross
+select movie,USA_Gross
+from mcu_data
+order by USA_Gross desc
+Limit 5;
